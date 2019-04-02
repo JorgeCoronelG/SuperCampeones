@@ -5,11 +5,16 @@
  */
 package view.principal;
 
+import controller.principal.CtlPrincipal;
+import view.equipo.PanelEquipo;
+
 /**
  *
  * @author Lalo
  */
 public class VistaPrincipal extends javax.swing.JFrame {
+
+    
 
     /**
      * Creates new form VistaPrincipal
@@ -27,68 +32,59 @@ public class VistaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
-        jPanel1 = new javax.swing.JPanel();
-        btnEquipo = new javax.swing.JButton();
+        splPanelPrincipal = new javax.swing.JSplitPane();
+        pnlMenuPrincipal = new javax.swing.JPanel();
         btnPartido = new javax.swing.JButton();
         btnTabla = new javax.swing.JButton();
+        btnEquipo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btnEquipo.setText("Equipo");
-        btnEquipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEquipoActionPerformed(evt);
-            }
-        });
 
         btnPartido.setText("Partido");
 
         btnTabla.setText("Tabla");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        btnEquipo.setText("Equipo");
+
+        javax.swing.GroupLayout pnlMenuPrincipalLayout = new javax.swing.GroupLayout(pnlMenuPrincipal);
+        pnlMenuPrincipal.setLayout(pnlMenuPrincipalLayout);
+        pnlMenuPrincipalLayout.setHorizontalGroup(
+            pnlMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMenuPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEquipo)
+                .addGroup(pnlMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnPartido)
-                    .addComponent(btnTabla))
+                    .addComponent(btnTabla)
+                    .addComponent(btnEquipo))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+        pnlMenuPrincipalLayout.setVerticalGroup(
+            pnlMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMenuPrincipalLayout.createSequentialGroup()
+                .addGap(64, 64, 64)
                 .addComponent(btnEquipo)
-                .addGap(28, 28, 28)
+                .addGap(29, 29, 29)
                 .addComponent(btnPartido)
                 .addGap(30, 30, 30)
                 .addComponent(btnTabla)
                 .addContainerGap(106, Short.MAX_VALUE))
         );
 
-        jSplitPane1.setLeftComponent(jPanel1);
+        splPanelPrincipal.setLeftComponent(pnlMenuPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(splPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(splPanelPrincipal)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEquipoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,11 +121,38 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
     }
 
+    public void setControlador(CtlPrincipal ctl) {        
+        btnEquipo.addActionListener(ctl);
+        btnPartido.addActionListener(ctl);
+        btnTabla.addActionListener(ctl);
+    }
+    
+    public void setPnlEquipo(PanelEquipo pnlEquipo){        
+        this.pnlEquipo = pnlEquipo;
+        splPanelPrincipal.setRightComponent(this.pnlEquipo);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(splPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(splPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+        );
+
+        pack();
+        
+ 
+    }
+
+    private PanelEquipo pnlEquipo;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEquipo;
     private javax.swing.JButton btnPartido;
     private javax.swing.JButton btnTabla;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JPanel pnlMenuPrincipal;
+    private javax.swing.JSplitPane splPanelPrincipal;
     // End of variables declaration//GEN-END:variables
 }

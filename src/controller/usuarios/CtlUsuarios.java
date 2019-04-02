@@ -1,5 +1,6 @@
 package controller.usuarios;
 
+import controller.principal.CtlPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.business.BnsUsuario;
@@ -12,20 +13,20 @@ import view.principal.VistaPrincipal;
  * @author Jorge Coronel González
  */
 public class CtlUsuarios implements ActionListener {
-
+    
     private FrmLogin vista;
     private BnsUsuario modeloUsuario;
-
+    
     public CtlUsuarios(FrmLogin vista, BnsUsuario modeloUsuario) {
         this.vista = vista;
         this.modeloUsuario = modeloUsuario;
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        
         try {
-
+            
             if (e.getActionCommand().equals("Ingresar")) {
                 vista.setControlador(new CtlUsuarios(vista, modeloUsuario));
                 vista.setTitle("Agregar usuario");
@@ -35,15 +36,18 @@ public class CtlUsuarios implements ActionListener {
                 if (usuario != null) {
                     vista.visualizarMsg("Ingreso correcto");
                     vista.dispose();
+                    VistaPrincipal vistaPrincipal = new VistaPrincipal();
+                    CtlPrincipal ctl = new CtlPrincipal(vistaPrincipal);
+                    vistaPrincipal.setControlador(ctl);
+                    vistaPrincipal.setVisible(true);
                     
-                    
-                } 
-
+                }                
+                
             }
-
+            
         } catch (Exception ex) {
             vista.visualizarMsg(ex.getMessage());            
         }
     }
-
+    
 }

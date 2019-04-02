@@ -23,21 +23,21 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jSplitPane1" alignment="0" pref="400" max="32767" attributes="0"/>
+          <Component id="splPanelPrincipal" alignment="0" pref="400" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jSplitPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="splPanelPrincipal" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JSplitPane" name="jSplitPane1">
+    <Container class="javax.swing.JSplitPane" name="splPanelPrincipal">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel1">
+        <Container class="javax.swing.JPanel" name="pnlMenuPrincipal">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
               <JSplitPaneConstraints position="left"/>
@@ -50,9 +50,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnEquipo" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="btnPartido" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="btnTabla" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnEquipo" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="23" max="32767" attributes="0"/>
                   </Group>
@@ -61,9 +61,9 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                       <Component id="btnEquipo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="btnPartido" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="btnTabla" min="-2" max="-2" attributes="0"/>
@@ -73,14 +73,6 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnEquipo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Equipo"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEquipoActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JButton" name="btnPartido">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Partido"/>
@@ -89,6 +81,11 @@
             <Component class="javax.swing.JButton" name="btnTabla">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tabla"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnEquipo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Equipo"/>
               </Properties>
             </Component>
           </SubComponents>
