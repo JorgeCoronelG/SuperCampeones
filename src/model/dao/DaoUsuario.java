@@ -18,8 +18,8 @@ public class DaoUsuario implements IUsuario, Constants{
     public DtoUsuario find(DtoUsuario usuario) throws Exception {
         DtoUsuario dto = null;
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        String consulta = "SELECT * FROM USUARIO WHERE nombreUs LIKE '?' AND passUs LIKE MD5(?)";
-        PreparedStatement pst = conn.prepareStatement(consulta);
+        String consulta = "SELECT * FROM USUARIO WHERE nombreUs LIKE ? AND passUs LIKE MD5(?)";
+        PreparedStatement pst = conn.prepareStatement(consulta);        
         pst.setString(1, usuario.getNombreUs());
         pst.setString(2, usuario.getPassUs());
         ResultSet rs = pst.executeQuery();
@@ -29,7 +29,7 @@ public class DaoUsuario implements IUsuario, Constants{
                     rs.getString("nombreUs"),
                     rs.getString("passUs"),
                     rs.getBoolean("estatus"));
-        }
+        }        
         return dto;
     }
     

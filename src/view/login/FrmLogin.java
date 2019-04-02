@@ -6,6 +6,8 @@
 package view.login;
 
 import controller.usuarios.CtlUsuarios;
+import javax.swing.JOptionPane;
+import model.dto.DtoUsuario;
 
 /**
  *
@@ -19,6 +21,23 @@ public class FrmLogin extends javax.swing.JFrame {
     public FrmLogin() {
         initComponents();
     }
+    
+    
+    public DtoUsuario obtenerDatos() {
+        DtoUsuario dto = new DtoUsuario();
+        dto.setIdUs(0);
+        dto.setNombreUs(txtUsuario.getText());
+        dto.setPassUs(psfContrasena.getText());
+        dto.setEstatus(true);
+        return dto;        
+    }
+    
+    
+    public void visualizarMsg(String msg) {
+        JOptionPane.showMessageDialog(this, msg);
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
