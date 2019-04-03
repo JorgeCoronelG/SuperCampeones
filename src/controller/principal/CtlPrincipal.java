@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import model.business.BnsEquipo;
 import model.business.BnsPartido;
 import view.equipo.PanelEquipo;
+import view.partido.PanelPartido;
 import view.principal.VistaPrincipal;
 import view.tabla.PanelTabla;
 
@@ -36,6 +37,15 @@ public class CtlPrincipal implements ActionListener {
                 pnlEquipo.setControlador(ctlEquipo);
                 pnlEquipo.VisualizarInformacion(modeloEquipo.buscarTodos());
                 vista.setPnlEquipo(pnlEquipo);
+            } catch (Exception ex) {
+                Logger.getLogger(CtlPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (e.getActionCommand().equalsIgnoreCase("Partido")) {
+            try {
+                modeloPartido = new BnsPartido();
+                PanelPartido pnlPartido = new PanelPartido();
+                pnlPartido.VisualizarInformacion(modeloPartido.buscarTodos());
+                vista.setPnlPartido(pnlPartido);
             } catch (Exception ex) {
                 Logger.getLogger(CtlPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }

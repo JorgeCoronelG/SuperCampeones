@@ -7,6 +7,7 @@ package view.principal;
 
 import controller.principal.CtlPrincipal;
 import view.equipo.PanelEquipo;
+import view.partido.PanelPartido;
 import view.tabla.PanelTabla;
 
 /**
@@ -14,7 +15,7 @@ import view.tabla.PanelTabla;
  * @author Lalo
  */
 public class VistaPrincipal extends javax.swing.JFrame {
-
+  
     /**
      * Creates new form VistaPrincipal
      */
@@ -144,6 +145,25 @@ public class VistaPrincipal extends javax.swing.JFrame {
         pack();
 
     }
+    
+    public void setPnlPartido(PanelPartido pnlPartido) {
+        this.pnlPartido = pnlPartido;
+        splPanelPrincipal.setRightComponent(this.pnlPartido);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(splPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(splPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+        );
+
+        pack();
+
+    }
 
     public void setPnlTabla(PanelTabla pnlTabla) {
         this.pnlTabla = pnlTabla;
@@ -165,6 +185,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
 
     private PanelEquipo pnlEquipo;
+    private PanelPartido pnlPartido;
     private PanelTabla pnlTabla;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEquipo;
