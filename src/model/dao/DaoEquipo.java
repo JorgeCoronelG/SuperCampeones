@@ -22,7 +22,30 @@ public class DaoEquipo implements IEquipo, Constants{
         List<DtoEquipo> lista = new ArrayList<DtoEquipo>();
         Class.forName(DRIVER);
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        String consulta = "SELECT * FROM EQUIPO";
+        String consulta = "SELECT * FROM EQUIPO ORDER BY nombreEq ASC";
+        PreparedStatement pst = conn.prepareStatement(consulta);
+        ResultSet rs = pst.executeQuery();
+        while(rs.next()){
+            lista.add(new DtoEquipo(
+                rs.getInt("idEq"), 
+                rs.getString("nombreEq"), 
+                rs.getInt("pgEq"), 
+                rs.getInt("ppEq"), 
+                rs.getInt("peEq"), 
+                rs.getInt("gaEq"), 
+                rs.getInt("geEq"), 
+                rs.getInt("difEq"), 
+                rs.getInt("puntosEq"))
+            );
+        }
+        return lista;
+    }
+    
+    public List<DtoEquipo> generalTable() throws Exception {
+        List<DtoEquipo> lista = new ArrayList<DtoEquipo>();
+        Class.forName(DRIVER);
+        Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+        String consulta = "SELECT * FROM EQUIPO ORDER BY puntosEq DESC, difEq ASC";
         PreparedStatement pst = conn.prepareStatement(consulta);
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
@@ -43,10 +66,10 @@ public class DaoEquipo implements IEquipo, Constants{
 
     @Override
     public List<DtoEquipo> findWanted(String busqueda) throws Exception {
-          List<DtoEquipo> lista = new ArrayList<DtoEquipo>();
+        List<DtoEquipo> lista = new ArrayList<DtoEquipo>();
         Class.forName(DRIVER);
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);        
-        String consulta = "SELECT * FROM EQUIPO WHERE nombreEq like ?";
+        String consulta = "SELECT * FROM EQUIPO WHERE nombreEq LIKE ?";
         PreparedStatement pst = conn.prepareStatement(consulta);
         pst.setString(1, "%" + busqueda + "%");
         ResultSet rs = pst.executeQuery();
