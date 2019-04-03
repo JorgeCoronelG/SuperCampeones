@@ -21,6 +21,10 @@ public class BnsEquipo {
         return daoEquipo.findAll();
     }
     
+    public List<DtoEquipo> tablaGeneral() throws Exception{
+        return daoEquipo.generalTable();
+    }
+    
     
     public List<DtoEquipo> buscarFiltrando(String busqueda) throws Exception{
         return daoEquipo.findWanted(busqueda);
@@ -104,8 +108,9 @@ public class BnsEquipo {
             int puntos;
             puntos = dto.getPgEq() * 3;
             puntos += dto.getPeEq();
+            puntos += dto.getPuntosEq();
             dto.setPuntosEq(puntos);
-            result = daoEquipo.updatePuntosEquipo(dtoEquipo);
+            result = daoEquipo.updatePuntosEquipo(dto);
         }
         return result;
     }
@@ -119,7 +124,7 @@ public class BnsEquipo {
             dto.setGaEq(dto.getGaEq() + golesFavor);
             dto.setGeEq(dto.getGeEq() + golesContra);
             dto.setDifEq(dto.getGaEq() - dto.getGeEq());
-            result = daoEquipo.updateGolesEquipo(dtoEquipo);
+            result = daoEquipo.updateGolesEquipo(dto);
         }
         return result;
     }

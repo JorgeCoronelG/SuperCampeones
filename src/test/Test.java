@@ -15,13 +15,7 @@ public class Test {
         BnsEquipo bnsEquipo = new BnsEquipo();
         
         /*try {
-            DtoEquipo dto = bnsEquipo.buscarEquipo("Necaxa");
-            int puntos;
-            puntos = dto.getPgEq() * 3;
-            puntos += dto.getPeEq();
-            puntos += dto.getPuntosEq();
-            dto.setPuntosEq(puntos);
-            if(bnsEquipo.actualizarPuntosEquipo(dto)){
+            if(bnsEquipo.actualizarPuntosEquipo(new DtoEquipo("América"))){
                 System.out.println("TRUE");
             }else{
                 System.out.println("FALSE");
@@ -30,7 +24,15 @@ public class Test {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }*/
         
-        
+        /*try{
+            if(bnsEquipo.actualizarGolesEquipo(new DtoEquipo("Necaxa"), 1, 1)){
+                System.out.println("TRUE");
+            }else{
+                System.out.println("FALSE");
+            }
+        }catch(Exception ex){
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
         
     }
     
