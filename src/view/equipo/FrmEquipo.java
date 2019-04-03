@@ -25,6 +25,16 @@ public class FrmEquipo extends javax.swing.JFrame {
     public FrmEquipo() {
         initComponents();
     }
+    
+    
+    
+    
+    public void visualizarDatos(DtoEquipo dto, int delete) {
+        txtNombre.setText(dto.getNombreEq());
+        if (delete > 0) {
+            txtNombre.setEditable(false);
+        }
+    }
 
     
     public void setControlador(CtlEquipo ctl){

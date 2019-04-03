@@ -46,7 +46,7 @@ public class DaoEquipo implements IEquipo, Constants{
         DtoEquipo dto = null;
         Class.forName(DRIVER);
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        String consulta = "SELECT * FROM EQUIPO WHERE nombreEq LIKE '?'";
+        String consulta = "SELECT * FROM EQUIPO WHERE nombreEq LIKE ?";
         PreparedStatement pst = conn.prepareStatement(consulta);
         pst.setString(1, dtoEquipo.getNombreEq());
         ResultSet rs = pst.executeQuery();
@@ -82,9 +82,9 @@ public class DaoEquipo implements IEquipo, Constants{
     public boolean delete(DtoEquipo dtoEquipo) throws Exception {
         Class.forName(DRIVER);
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        String consulta = "DELETE FROM USUARIO WHERE idEq = ?";
+        String consulta = "DELETE FROM EQUIPO WHERE nombreEq LIKE ?";
         PreparedStatement pst = conn.prepareStatement(consulta);
-        pst.setInt(1, dtoEquipo.getIdEq());
+        pst.setString(1, dtoEquipo.getNombreEq());
         int result = pst.executeUpdate();
         return result >= 1;
     }
@@ -93,7 +93,7 @@ public class DaoEquipo implements IEquipo, Constants{
     public boolean update(DtoEquipo dtoEquipo) throws Exception {
         Class.forName(DRIVER);
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        String consulta = "UPDATE EQUIPO SET nombreEq = '?' WHERE idEq = ?";
+        String consulta = "UPDATE EQUIPO SET nombreEq = ? WHERE idEq = ?";
         PreparedStatement pst = conn.prepareStatement(consulta);
         pst.setString(1, dtoEquipo.getNombreEq());
         pst.setInt(2, dtoEquipo.getIdEq());

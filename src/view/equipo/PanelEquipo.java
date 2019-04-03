@@ -7,6 +7,7 @@ package view.equipo;
 
 import controller.equipos.CtlEquipo;
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.dto.DtoEquipo;
 
 /**
@@ -21,6 +22,22 @@ public class PanelEquipo extends javax.swing.JPanel {
     public PanelEquipo() {
         initComponents();
     }
+    
+    
+    public String obtenerDatoEquipo() throws Exception {
+        int row = jTable1.getSelectedRow();
+        if (row < 0) {
+            throw new Exception("selecciona un registro");
+        }
+        return (String) jTable1.getValueAt(row, 0);
+    }
+    
+    
+    
+    public void visualizarMsg(String msg) {
+        JOptionPane.showMessageDialog(this, msg);
+    }
+    
     
     
     public void VisualizarInformacion(List<DtoEquipo> lista) {

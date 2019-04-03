@@ -11,6 +11,7 @@ import model.dto.DtoEquipo;
 public class BnsEquipo {
     
     private DaoEquipo daoEquipo;
+    private DtoEquipo dtoEquipoUpdate;
 
     public BnsEquipo() {
         daoEquipo = new DaoEquipo();
@@ -28,7 +29,8 @@ public class BnsEquipo {
             DtoEquipo dto = new DtoEquipo();
             dto.setNombreEq(nombreEq);
             dtoEquipo = daoEquipo.find(dto);
-        }
+        } 
+        dtoEquipoUpdate = dtoEquipo;
         return dtoEquipo;
     }
     
@@ -45,29 +47,37 @@ public class BnsEquipo {
         return dtoEquipo;
     }
     
-    public boolean actualizar(int idEq, String nombreEq) throws Exception{
+    public boolean actualizar(DtoEquipo dtoActual, DtoEquipo dtoNuevo) throws Exception{
         boolean result = false;
-        if(nombreEq.isEmpty() || nombreEq == null || idEq == 0){
+        if(dtoNuevo.getNombreEq().isEmpty() || dtoNuevo.getNombreEq() == null){
             throw new Exception("Faltan datos");
         }else{
             DtoEquipo dtoEquipo = new DtoEquipo();
-            dtoEquipo.setIdEq(idEq);
-            dtoEquipo.setNombreEq(nombreEq);
+            dtoEquipo.setIdEq(dtoActual.getIdEq());
+            dtoEquipo.setNombreEq(dtoNuevo.getNombreEq());
             result = daoEquipo.update(dtoEquipo);
         }
         return result;
     }
     
-    public boolean borrar(int idEq) throws Exception{
+    public boolean borrar(String nombreEq) throws Exception{
         boolean result = false;
-        if(idEq == 0){
+        if(nombreEq == null){
             throw new Exception("Faltan datos");
         }else{
             DtoEquipo dtoEquipo = new DtoEquipo();
-            dtoEquipo.setIdEq(idEq);
+            dtoEquipo.setNombreEq(nombreEq);
             result = daoEquipo.delete(dtoEquipo);
         }
         return result;
+    }
+
+    public DtoEquipo getDtoEquipoUpdate() {
+        return dtoEquipoUpdate;
+    }
+
+    public void setDtoEquipoUpdate(DtoEquipo dtoEquipoUpdate) {
+        this.dtoEquipoUpdate = dtoEquipoUpdate;
     }
     
 }

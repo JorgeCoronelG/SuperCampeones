@@ -51,51 +51,50 @@ public class CtlEquipo implements ActionListener{
                 frmEquipo.setTitle("Agregar equipo");
                 frmEquipo.setAccion("Agregar");
                 frmEquipo.setVisible(true);
-            } /**else if(e.getActionCommand().equalsIgnoreCase("Editar")){
-                frmUsuario = new FrmUsuario();
-                frmUsuario.setControlador(new CtlUsuario(pnlUsuarios, frmUsuario, mdlUsuario));
-                frmUsuario.setTitle("Editar usuario");
-                frmUsuario.setAccion("Editar");
-                String usuario = pnlUsuarios.obtenerDatoUsuario();
-                frmUsuario.visualizarDatos(mdlUsuario.buscarUsuario(usuario),0);
-                frmUsuario.setVisible(true);
-            }
-            else if(e.getActionCommand().equalsIgnoreCase("Borrar")){
-                frmUsuario = new FrmUsuario();
-                frmUsuario.setControlador(new CtlUsuario(pnlUsuarios, frmUsuario, mdlUsuario));
-                frmUsuario.setTitle("Borrar usuario");
-                frmUsuario.setAccion("Borrar");
-                String usuario = pnlUsuarios.obtenerDatoUsuario();
-                frmUsuario.visualizarDatos(mdlUsuario.buscarUsuario(usuario),1);                
-                frmUsuario.setVisible(true);
-            }**/else if(e.getActionCommand().equals("Aceptar")){
+            } else if(e.getActionCommand().equalsIgnoreCase("Editar")){
+                frmEquipo = new FrmEquipo();
+                frmEquipo.setControlador(new CtlEquipo(pnlEquipo, frmEquipo, mdlEquipo));
+                frmEquipo.setTitle("Editar equipo");
+                frmEquipo.setAccion("Editar");
+                String nombre = pnlEquipo.obtenerDatoEquipo();                
+                frmEquipo.visualizarDatos(mdlEquipo.buscarEquipo(nombre),0);                
+                frmEquipo.setVisible(true);
+            } else if(e.getActionCommand().equalsIgnoreCase("Borrar")){
+                frmEquipo = new FrmEquipo();
+                frmEquipo.setControlador(new CtlEquipo(pnlEquipo, frmEquipo, mdlEquipo));
+                frmEquipo.setTitle("Borrar equipo");
+                frmEquipo.setAccion("Borrar");
+                String equipo = pnlEquipo.obtenerDatoEquipo();
+                frmEquipo.visualizarDatos(mdlEquipo.buscarEquipo(equipo),1);                
+                frmEquipo.setVisible(true);
+            } else if(e.getActionCommand().equals("Aceptar")){
                 if(frmEquipo.getAccion().equalsIgnoreCase("Agregar")){
                     DtoEquipo dto = frmEquipo.obtenerDatos();
                     mdlEquipo.crear(dto.getNombreEq());
                     frmEquipo.visualizarMsg("Guardado correctamente");
                     frmEquipo.dispose();
                     pnlEquipo.VisualizarInformacion(mdlEquipo.buscarTodos());
-                }/**else if(frmUsuario.getAccion().equalsIgnoreCase("Editar")){                    
-                    DtoUsuario dtoNuevo = frmUsuario.obtenerDatos();
-                    DtoUsuario dtoActual = mdlUsuario.getDtoUsuarioUpdate();                    
-                    if(mdlUsuario.actualizarUsuario(dtoActual,dtoNuevo)){
-                        frmUsuario.visualizarMsg("Guardado correctamente");
-                        frmUsuario.dispose();
+                }else if(frmEquipo.getAccion().equalsIgnoreCase("Editar")){                    
+                    DtoEquipo dtoNuevo = frmEquipo.obtenerDatos();
+                    DtoEquipo dtoActual = mdlEquipo.getDtoEquipoUpdate();
+                    if(mdlEquipo.actualizar(dtoActual,dtoNuevo)){
+                        frmEquipo.visualizarMsg("Guardado correctamente");
+                        frmEquipo.dispose();
                     }else{
-                        frmUsuario.visualizarMsg("Ocurrió un error");
-                        frmUsuario.dispose();
+                        frmEquipo.visualizarMsg("Ocurrió un error");
+                        frmEquipo.dispose();
                     }
-                }else if(frmUsuario.getAccion().equalsIgnoreCase("Borrar")){                    
-                    DtoUsuario dto = frmUsuario.obtenerDatos();
-                    DtoUsuario dtoDelete = mdlUsuario.buscarUsuario(dto.getUsuario());
-                    if(mdlUsuario.borrarUsuario(dtoDelete)){
-                        frmUsuario.visualizarMsg("Eliminado correctamente");
-                        frmUsuario.dispose();
+                }else if(frmEquipo.getAccion().equalsIgnoreCase("Borrar")){                    
+                    DtoEquipo dto = frmEquipo.obtenerDatos();
+                    //DtoEquipo dtoDelete = mdlUsuario.buscarUsuario(dto.getUsuario());
+                    if(mdlEquipo.borrar(dto.getNombreEq())){
+                        frmEquipo.visualizarMsg("Eliminado correctamente");
+                            frmEquipo.dispose();
                     }else{
-                        frmUsuario.visualizarMsg("Ocurrió un error");
-                        frmUsuario.dispose();
+                        frmEquipo.visualizarMsg("Ocurrió un error");
+                        frmEquipo.dispose();
                     }
-                }**/
+                }
             }else if(e.getActionCommand().equals("Cancelar")){
                 frmEquipo.dispose();
             }
