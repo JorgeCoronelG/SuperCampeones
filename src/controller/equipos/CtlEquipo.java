@@ -7,6 +7,7 @@ package controller.equipos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JOptionPane;
 import model.business.BnsEquipo;
 import model.dto.DtoEquipo;
@@ -43,8 +44,13 @@ public class CtlEquipo implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
              try{
-            if(e.getActionCommand().equals("Buscar")){
-                //Código
+            if(e.getActionCommand().equalsIgnoreCase("Buscar")){                                
+                frmEquipo = new FrmEquipo();
+                frmEquipo.setControlador(new CtlEquipo(pnlEquipo, frmEquipo, mdlEquipo));
+                String busqueda = pnlEquipo.obtenerBusqueda();                                
+                List<DtoEquipo>lista = mdlEquipo.buscarFiltrando(busqueda);
+                frmEquipo.dispose();                
+                pnlEquipo.VisualizarInformacion(lista);                
             }else if(e.getActionCommand().equalsIgnoreCase("Agregar")){
                 frmEquipo = new FrmEquipo();
                 frmEquipo.setControlador(new CtlEquipo(pnlEquipo, frmEquipo, mdlEquipo));

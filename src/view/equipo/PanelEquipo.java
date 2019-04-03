@@ -22,8 +22,12 @@ public class PanelEquipo extends javax.swing.JPanel {
     public PanelEquipo() {
         initComponents();
     }
-    
-    
+
+    public String obtenerBusqueda() {
+        String busqueda = txtBuscar.getText();
+        return busqueda;
+    }
+
     public String obtenerDatoEquipo() throws Exception {
         int row = jTable1.getSelectedRow();
         if (row < 0) {
@@ -31,15 +35,11 @@ public class PanelEquipo extends javax.swing.JPanel {
         }
         return (String) jTable1.getValueAt(row, 0);
     }
-    
-    
-    
+
     public void visualizarMsg(String msg) {
         JOptionPane.showMessageDialog(this, msg);
     }
-    
-    
-    
+
     public void VisualizarInformacion(List<DtoEquipo> lista) {
 
         Object[][] datos = new Object[lista.size()][2];
@@ -72,19 +72,16 @@ public class PanelEquipo extends javax.swing.JPanel {
         });
 
     }
-    
-    
-      public void setControlador(CtlEquipo ctlEquipo) {
 
-        //btnAgregar.addActionListener(CtlUsuario ctlUsuario1);
+    public void setControlador(CtlEquipo ctlEquipo) {
+
+        
         btnAgregar.addActionListener(ctlEquipo);
         btnBorrar.addActionListener(ctlEquipo);
         btnEditar.addActionListener(ctlEquipo);
-       // btnBuscar.addActionListener(ctlUsuario);
+        btnBuscar.addActionListener(ctlEquipo);
 
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,7 +98,7 @@ public class PanelEquipo extends javax.swing.JPanel {
         btnEditar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         txtBuscar = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -135,7 +132,7 @@ public class PanelEquipo extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Buscar");
+        btnBuscar.setText("Buscar");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -173,7 +170,7 @@ public class PanelEquipo extends javax.swing.JPanel {
                         .addGap(38, 38, 38)
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
+                        .addComponent(btnBuscar))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -185,7 +182,7 @@ public class PanelEquipo extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnBuscar))
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(31, Short.MAX_VALUE))
@@ -217,8 +214,8 @@ public class PanelEquipo extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

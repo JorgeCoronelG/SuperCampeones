@@ -21,6 +21,11 @@ public class BnsEquipo {
         return daoEquipo.findAll();
     }
     
+    
+    public List<DtoEquipo> buscarFiltrando(String busqueda) throws Exception{
+        return daoEquipo.findWanted(busqueda);
+    }
+    
     public DtoEquipo buscarEquipo(String nombreEq) throws Exception{
         DtoEquipo dtoEquipo = null;
         if(nombreEq.isEmpty() || nombreEq == null){

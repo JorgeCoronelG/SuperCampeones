@@ -42,6 +42,31 @@ public class DaoEquipo implements IEquipo, Constants{
     }
 
     @Override
+    public List<DtoEquipo> findWanted(String busqueda) throws Exception {
+          List<DtoEquipo> lista = new ArrayList<DtoEquipo>();
+        Class.forName(DRIVER);
+        Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);        
+        String consulta = "SELECT * FROM EQUIPO WHERE nombreEq like ?";
+        PreparedStatement pst = conn.prepareStatement(consulta);
+        pst.setString(1, "%" + busqueda + "%");
+        ResultSet rs = pst.executeQuery();
+        while(rs.next()){
+            lista.add(new DtoEquipo(
+                rs.getInt("idEq"), 
+                rs.getString("nombreEq"), 
+                rs.getInt("pgEq"), 
+                rs.getInt("ppEq"), 
+                rs.getInt("peEq"), 
+                rs.getInt("gaEq"), 
+                rs.getInt("geEq"), 
+                rs.getInt("difEq"), 
+                rs.getInt("puntosEq"))
+            );
+        }
+        return lista;
+    }
+    
+    @Override
     public DtoEquipo find(DtoEquipo dtoEquipo) throws Exception {
         DtoEquipo dto = null;
         Class.forName(DRIVER);
@@ -100,5 +125,7 @@ public class DaoEquipo implements IEquipo, Constants{
         int result = pst.executeUpdate();
         return result >= 1;
     }
+
+    
     
 }
