@@ -85,4 +85,43 @@ public class BnsEquipo {
         this.dtoEquipoUpdate = dtoEquipoUpdate;
     }
     
+    public boolean actualizarPartidosEquipo(DtoEquipo dtoEquipo, int resultadoPartido) throws Exception{
+        boolean result = false;
+        if(dtoEquipo == null || (resultadoPartido != 1 && resultadoPartido != 2 && resultadoPartido != 3)){
+            throw new Exception("Faltan datos");
+        }else{
+            result = daoEquipo.updatePartidosEquipo(dtoEquipo, resultadoPartido);
+        }
+        return result;
+    }
+    
+    public boolean actualizarPuntosEquipo(DtoEquipo dtoEquipo) throws Exception{
+        boolean result = false;
+        if(dtoEquipo == null){
+            throw new Exception("Faltan datos");
+        }else{
+            DtoEquipo dto = daoEquipo.find(dtoEquipo);
+            int puntos;
+            puntos = dto.getPgEq() * 3;
+            puntos += dto.getPeEq();
+            dto.setPuntosEq(puntos);
+            result = daoEquipo.updatePuntosEquipo(dtoEquipo);
+        }
+        return result;
+    }
+    
+    public boolean actualizarGolesEquipo(DtoEquipo dtoEquipo, int golesFavor, int golesContra) throws Exception{
+        boolean result = false;
+        if(dtoEquipo == null){
+            throw new Exception("Faltan datos");
+        }else{
+            DtoEquipo dto = daoEquipo.find(dtoEquipo);
+            dto.setGaEq(dto.getGaEq() + golesFavor);
+            dto.setGeEq(dto.getGeEq() + golesContra);
+            dto.setDifEq(dto.getGaEq() - dto.getGeEq());
+            result = daoEquipo.updateGolesEquipo(dtoEquipo);
+        }
+        return result;
+    }
+    
 }

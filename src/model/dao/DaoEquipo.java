@@ -128,4 +128,51 @@ public class DaoEquipo implements IEquipo, Constants{
 
     
     
+    /**
+     * Método para actualizar las estadísticas de partidos ganados, empatados o perdidos
+     * @param dtoEquipo
+     * @param resultadoPartido 1 = ganado, 2 = empatado, 3 = perdido
+     * @return boolean
+     */
+    public boolean updatePartidosEquipo(DtoEquipo dtoEquipo, int resultadoPartido) throws Exception{
+        Class.forName(DRIVER);
+        Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+        String consulta = "";
+        if(resultadoPartido == 1){
+            consulta = "UPDATE EQUIPO SET pgEq = pgEq+1 WHERE idEq = ?";
+        }else if(resultadoPartido == 2){
+            consulta = "UPDATE EQUIPO SET peEq = peEq+1 WHERE idEq = ?";
+        }else if(resultadoPartido == 3){
+            consulta = "UPDATE EQUIPO SET ppEq = ppEq+1 WHERE idEq = ?";
+        }
+        PreparedStatement pst = conn.prepareStatement(consulta);
+        pst.setInt(1, dtoEquipo.getIdEq());
+        int result = pst.executeUpdate();
+        return result >= 1;
+    }
+    
+    public boolean updatePuntosEquipo(DtoEquipo dtoEquipo) throws Exception{
+        Class.forName(DRIVER);
+        Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+        String consulta = "UPDATE EQUIPO SET puntosEq = ? WHERE idEq = ?";
+        PreparedStatement pst = conn.prepareStatement(consulta);
+        pst.setInt(1, dtoEquipo.getPuntosEq());
+        pst.setInt(2, dtoEquipo.getIdEq());
+        int result = pst.executeUpdate();
+        return result >= 1;
+    }
+    
+    public boolean updateGolesEquipo(DtoEquipo dtoEquipo) throws Exception{
+        Class.forName(DRIVER);
+        Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+        String consulta = "UPDATE EQUIPO SET gaEq = ?, geEq = ?, difEq = ? WHERE idEq = ?";
+        PreparedStatement pst = conn.prepareStatement(consulta);
+        pst.setInt(1, dtoEquipo.getGaEq());
+        pst.setInt(2, dtoEquipo.getGeEq());
+        pst.setInt(3, dtoEquipo.getDifEq());
+        pst.setInt(4, dtoEquipo.getIdEq());
+        int result = pst.executeUpdate();
+        return result >= 1;
+    }
+    
 }
