@@ -7,14 +7,13 @@ package view.principal;
 
 import controller.principal.CtlPrincipal;
 import view.equipo.PanelEquipo;
+import view.tabla.PanelTabla;
 
 /**
  *
  * @author Lalo
  */
 public class VistaPrincipal extends javax.swing.JFrame {
-
-    
 
     /**
      * Creates new form VistaPrincipal
@@ -121,33 +120,52 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
     }
 
-    public void setControlador(CtlPrincipal ctl) {        
+    public void setControlador(CtlPrincipal ctl) {
         btnEquipo.addActionListener(ctl);
         btnPartido.addActionListener(ctl);
         btnTabla.addActionListener(ctl);
     }
-    
-    public void setPnlEquipo(PanelEquipo pnlEquipo){        
+
+    public void setPnlEquipo(PanelEquipo pnlEquipo) {
         this.pnlEquipo = pnlEquipo;
         splPanelPrincipal.setRightComponent(this.pnlEquipo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(splPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(splPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         pack();
-        
- 
+
+    }
+
+    public void setPnlTabla(PanelTabla pnlTabla) {
+        this.pnlTabla = pnlTabla;
+        splPanelPrincipal.setRightComponent(this.pnlTabla);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(splPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(splPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+        );
+
+        pack();
+
     }
 
     private PanelEquipo pnlEquipo;
+    private PanelTabla pnlTabla;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEquipo;
     private javax.swing.JButton btnPartido;

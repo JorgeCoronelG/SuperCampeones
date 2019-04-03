@@ -9,18 +9,17 @@ import model.business.BnsEquipo;
 import model.business.BnsPartido;
 import view.equipo.PanelEquipo;
 import view.principal.VistaPrincipal;
-
+import view.tabla.PanelTabla;
 
 /**
  *
  * @author Jorge Coronel González
  */
 public class CtlPrincipal implements ActionListener {
-    
+
     private VistaPrincipal vista;
     private BnsEquipo modeloEquipo;
     private BnsPartido modeloPartido;
-    
 
     public CtlPrincipal(VistaPrincipal vista) {
         this.vista = vista;
@@ -28,30 +27,28 @@ public class CtlPrincipal implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equalsIgnoreCase("Equipo")){
+        if (e.getActionCommand().equalsIgnoreCase("Equipo")) {
             try {
                 //Hacer algo
                 modeloEquipo = new BnsEquipo();
                 PanelEquipo pnlEquipo = new PanelEquipo();
-                CtlEquipo ctlEquipo = new CtlEquipo(pnlEquipo, modeloEquipo);        
+                CtlEquipo ctlEquipo = new CtlEquipo(pnlEquipo, modeloEquipo);
                 pnlEquipo.setControlador(ctlEquipo);
-                pnlEquipo.VisualizarInformacion(modeloEquipo.buscarTodos());                
+                pnlEquipo.VisualizarInformacion(modeloEquipo.buscarTodos());
                 vista.setPnlEquipo(pnlEquipo);
             } catch (Exception ex) {
                 Logger.getLogger(CtlPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }/**else if(e.getActionCommand().equals("Roles")){
+        } else if (e.getActionCommand().equalsIgnoreCase("Tabla")) {
             try {
-                modeloRol = new BnsMain();
-                PanelRoles pnlRoles = new PanelRoles();
-                CtlRol ctlRol = new CtlRol(pnlRoles, modeloRol);
-                pnlRoles.setControlador(ctlRol);
-                pnlRoles.visualizarInformacion(modeloRol.buscarTodosRol());
-                vista.setPnlRoles(pnlRoles);
+                modeloEquipo = new BnsEquipo();
+                PanelTabla pnlTabla = new PanelTabla();
+                pnlTabla.VisualizarInformacion(modeloEquipo.tablaGeneral());
+                vista.setPnlTabla(pnlTabla);
             } catch (Exception ex) {
-                Logger.getLogger(CtlRol.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CtlPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }**/
+        }
     }
-    
+
 }
