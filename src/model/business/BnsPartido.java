@@ -32,12 +32,12 @@ public class BnsPartido {
         return dtoPartido;
     }
     
-    public DtoPartido crear(String arbitroPtd, int jorPtd) throws Exception{
+    public DtoPartido crear(DtoPartido dto) throws Exception{
         DtoPartido dtoPartido = null;
-        if(arbitroPtd.isEmpty() || arbitroPtd == null || jorPtd == 0){
+        if(dto.getArbitroPtd().isEmpty() || dto.getArbitroPtd() == null || dto.getJorPtd() == 0  ){
             throw new Exception("Faltan datos");
         }else{
-            dtoPartido = daoPartido.create(new DtoPartido(0, arbitroPtd, jorPtd));
+            dtoPartido = daoPartido.create(dto);
             if(dtoPartido == null){
                 throw new Exception("Partido no creado");
             }

@@ -32,7 +32,7 @@ public class FrmPartido extends javax.swing.JFrame {
     
     public DtoPartido obtenerDatos() {
         DtoPartido dto = new DtoPartido();
-        dto.setIdPtd(0);
+        dto.setIdPtd(0);        
         dto.setArbitroPtd(txtArbitro.getText());
         dto.setJorPtd(Integer.valueOf(txtJornada.getText()));
         return dto;
@@ -49,7 +49,6 @@ public class FrmPartido extends javax.swing.JFrame {
         List<DtoEquipo> lista = obtenerEquipos();
         for (int i = 0; i < lista.size(); i++) {
             cbxEquipos.addItem(lista.get(i).getNombreEq());
-
         }
     }
 
@@ -79,13 +78,13 @@ public class FrmPartido extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblJornada = new javax.swing.JLabel();
-        txtFecha = new javax.swing.JTextField();
         txtArbitro = new javax.swing.JTextField();
         txtJornada = new javax.swing.JTextField();
         lblEquipos = new javax.swing.JLabel();
         cbxEquipos = new javax.swing.JComboBox<>();
         btnAsignar = new javax.swing.JButton();
         btnReiniciar = new javax.swing.JButton();
+        dchFecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,22 +143,17 @@ public class FrmPartido extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtArbitro, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                                    .addComponent(txtFecha))
-                                .addGap(113, 113, 113))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cbxEquipos, 0, 97, Short.MAX_VALUE)
+                                    .addComponent(txtJornada))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnAsignar))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(cbxEquipos, 0, 97, Short.MAX_VALUE)
-                                            .addComponent(txtJornada))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnAsignar))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(btnReiniciar)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(10, 10, 10)
+                                .addComponent(btnReiniciar))
+                            .addComponent(txtArbitro, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dchFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(60, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel3)
@@ -172,11 +166,11 @@ public class FrmPartido extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addComponent(dchFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtArbitro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -267,6 +261,7 @@ public class FrmPartido extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnReiniciar;
     private javax.swing.JComboBox<String> cbxEquipos;
+    private com.toedter.calendar.JDateChooser dchFecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -275,7 +270,6 @@ public class FrmPartido extends javax.swing.JFrame {
     private javax.swing.JLabel lblLocal;
     private javax.swing.JLabel lblVisitante;
     private javax.swing.JTextField txtArbitro;
-    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtJornada;
     // End of variables declaration//GEN-END:variables
 

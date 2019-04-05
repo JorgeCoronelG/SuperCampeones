@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.business.BnsPartido;
+import model.dto.DtoPartido;
 import view.partido.FrmPartido;
 import view.partido.PanelPartido;
 
@@ -47,9 +48,9 @@ public class CtlPartido implements ActionListener{
                 frmPartido.setVisible(true);                                
             } else if (e.getActionCommand().equalsIgnoreCase("Aceptar")) {
                 if (frmPartido.getAccion().equalsIgnoreCase("Agregar")) {
-                    //DtoPartido dto = frmPartido.obtenerDatos();
-                    //mdlPartido.crear(dto);
-                    //frmPartido.visualizarMsg("Guardado correctamente");
+                    DtoPartido dto = frmPartido.obtenerDatos();
+                    mdlPartido.crear(dto);
+                    frmPartido.visualizarMsg("Guardado correctamente");
                     frmPartido.dispose();
                     pnlPartido.VisualizarInformacion(mdlPartido.buscarTodos());
                 } 
