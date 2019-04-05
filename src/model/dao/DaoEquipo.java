@@ -147,9 +147,7 @@ public class DaoEquipo implements IEquipo, Constants{
         pst.setInt(2, dtoEquipo.getIdEq());
         int result = pst.executeUpdate();
         return result >= 1;
-    }
-
-    
+    }    
     
     /**
      * Método para actualizar las estadísticas de partidos ganados, empatados o perdidos
@@ -196,6 +194,40 @@ public class DaoEquipo implements IEquipo, Constants{
         pst.setInt(4, dtoEquipo.getIdEq());
         int result = pst.executeUpdate();
         return result >= 1;
+    }
+    
+    public List<DtoEquipo> getEquiposExcepto(List<DtoEquipo> equipos) throws Exception{
+        List<DtoEquipo> lista = new ArrayList<DtoEquipo>();
+        Class.forName(DRIVER);
+        Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+        String consulta = "SELECT * FROM EQUIPO WHERE idEq != ? ";
+        if(equipos.size() > 1){
+            for(int i = 1; i < equipos.size(); i++){
+                consulta += "AND idEq != ?";
+            }
+        }
+        PreparedStatement pst = conn.prepareStatement(consulta);
+        pst.setInt(1, equipos.get(0).getIdEq());
+        if(equipos.size() > 1){
+            for(int i = 1; i < equipos.size(); i++){
+                pst.setInt(i+1, equipos.get(i).getIdEq());
+            }
+        }
+        ResultSet rs = pst.executeQuery();
+        while(rs.next()){
+            lista.add(new DtoEquipo(
+                rs.getInt("idEq"), 
+                rs.getString("nombreEq"), 
+                rs.getInt("pgEq"), 
+                rs.getInt("ppEq"), 
+                rs.getInt("peEq"), 
+                rs.getInt("gaEq"), 
+                rs.getInt("geEq"), 
+                rs.getInt("difEq"), 
+                rs.getInt("puntosEq"))
+            );
+        }
+        return lista;
     }
     
 }

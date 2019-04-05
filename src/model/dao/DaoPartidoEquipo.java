@@ -22,24 +22,25 @@ public class DaoPartidoEquipo implements Constants {
     
     /**
      * Método para sacar los equipos con los que se ha enfrentado algún equipo
-     * @param dtoPartidoEquipo Dto con el equipo referente
+     * @param dtoPartidoEquipo Dto con el equipo y partido referente
      * @return Lista de partidos
      */
     public List<DtoEquipo> getPartidosEquipo(DtoPartidoEquipo dtoPartidoEquipo) throws Exception{
         List<DtoEquipo> lista = new ArrayList<DtoEquipo>();
         Class.forName(DRIVER);
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        String consulta = "SELECT idEq FROM partido_equipo INNER JOIN partido ON "
-                + "partido_equipo.idPtd = partido.idPtd WHERE partido_equipo.idPtd = ?";
+        String consulta = "SELECT partido_equipo.idEq AS idEq FROM partido_equipo INNER JOIN partido ON "
+                + "partido_equipo.idPtd = partido.idPtd WHERE idEq != ? AND partido_equipo.idPtd "
+                + "IN(SELECT partido_equipo.idPtd FROM partido_equipo INNER JOIN partido ON "
+                + "partido_equipo.idPtd = partido.idPtd WHERE idEq = ?)";
         PreparedStatement pst = conn.prepareStatement(consulta);
         pst.setInt(1, dtoPartidoEquipo.getEquipo().getIdEq());
+        pst.setInt(2, dtoPartidoEquipo.getEquipo().getIdEq());
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
-            if(rs.getInt("idEq") != dtoPartidoEquipo.getEquipo().getIdEq()){
-                DtoEquipo dto = new DtoEquipo();
-                dto.setIdEq(rs.getInt("idEq"));
-                lista.add(dto);
-            }
+            DtoEquipo dto = new DtoEquipo();
+            dto.setIdEq(rs.getInt("idEq"));
+            lista.add(dto);
         }
         return lista;
     }
