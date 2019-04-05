@@ -31,8 +31,7 @@ public class DaoPartidoEquipo implements Constants {
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
         String consulta = "SELECT partido_equipo.idEq AS idEq FROM partido_equipo INNER JOIN partido ON "
                 + "partido_equipo.idPtd = partido.idPtd WHERE idEq != ? AND partido_equipo.idPtd "
-                + "IN(SELECT partido_equipo.idPtd FROM partido_equipo INNER JOIN partido ON "
-                + "partido_equipo.idPtd = partido.idPtd WHERE idEq = ?)";
+                + "IN(SELECT partido_equipo.idPtd FROM partido_equipo WHERE idEq = ?)";
         PreparedStatement pst = conn.prepareStatement(consulta);
         pst.setInt(1, dtoPartidoEquipo.getEquipo().getIdEq());
         pst.setInt(2, dtoPartidoEquipo.getEquipo().getIdEq());
@@ -43,6 +42,18 @@ public class DaoPartidoEquipo implements Constants {
             lista.add(dto);
         }
         return lista;
+    }
+    
+    public DtoPartidoEquipo create(DtoPartidoEquipo dtoPartidoEquipo) throws Exception{
+        Class.forName(DRIVER);
+        Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+        String consulta = "INSERT INTO PARTIDO_EQUIPO VALUES(?,?,?)";
+        PreparedStatement pst = conn.prepareStatement(consulta);
+        pst.setInt(1, dtoPartidoEquipo.getPartido().getIdPtd());
+        pst.setInt(2, dtoPartidoEquipo.getEquipo().getIdEq());
+        pst.setInt(3, dtoPartidoEquipo.getGolesEq());
+        pst.executeUpdate();
+        return dtoPartidoEquipo;
     }
     
 }

@@ -119,7 +119,7 @@ public class DaoEquipo implements IEquipo, Constants{
     public DtoEquipo create(DtoEquipo dtoEquipo) throws Exception {
         Class.forName(DRIVER);
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        String consulta = "INSERT INTO EQUIPO values(null,?,0,0,0,0,0,0,0)";
+        String consulta = "INSERT INTO EQUIPO VALUES(null,?,0,0,0,0,0,0,0)";
         PreparedStatement pst = conn.prepareStatement(consulta);
         pst.setString(1, dtoEquipo.getNombreEq());
         pst.executeUpdate();
