@@ -1,6 +1,7 @@
 package controller.principal;
 
 import controller.equipos.CtlEquipo;
+import controller.partidos.CtlPartido;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
@@ -44,7 +45,9 @@ public class CtlPrincipal implements ActionListener {
             try {
                 modeloPartido = new BnsPartido();
                 PanelPartido pnlPartido = new PanelPartido();
-                pnlPartido.VisualizarInformacion(modeloPartido.buscarTodos());
+                CtlPartido ctlPartido = new CtlPartido(pnlPartido, modeloPartido);
+                pnlPartido.setControlador(ctlPartido);
+                pnlPartido.VisualizarInformacion(modeloPartido.buscarTodos());                
                 vista.setPnlPartido(pnlPartido);
             } catch (Exception ex) {
                 Logger.getLogger(CtlPrincipal.class.getName()).log(Level.SEVERE, null, ex);

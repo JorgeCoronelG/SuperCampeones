@@ -74,8 +74,6 @@ public class PanelEquipo extends javax.swing.JPanel {
     }
 
     public void setControlador(CtlEquipo ctlEquipo) {
-
-        
         btnAgregar.addActionListener(ctlEquipo);
         btnBorrar.addActionListener(ctlEquipo);
         btnEditar.addActionListener(ctlEquipo);

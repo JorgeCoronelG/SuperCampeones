@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Joan%20Vidal/Documents/NetBeansProjects/END/SuperCampeones/src/view/equipo/FrmEquipo.java</file>
+            <file>file:/C:/Users/Joan%20Vidal/Documents/NetBeansProjects/END/SuperCampeones/src/model/dao/DaoEquipo.java</file>
+            <file>file:/C:/Users/Joan%20Vidal/Documents/NetBeansProjects/END/SuperCampeones/src/controller/equipos/CtlEquipo.java</file>
+            <file>file:/C:/Users/Joan%20Vidal/Documents/NetBeansProjects/END/SuperCampeones/src/view/equipo/PanelEquipo.java</file>
+            <file>file:/C:/Users/Joan%20Vidal/Documents/NetBeansProjects/END/SuperCampeones/src/view/partido/FrmPartido.java</file>
+            <file>file:/C:/Users/Joan%20Vidal/Documents/NetBeansProjects/END/SuperCampeones/src/view/partido/PanelPartido.java</file>
+            <file>file:/C:/Users/Joan%20Vidal/Documents/NetBeansProjects/END/SuperCampeones/src/controller/partidos/CtlPartido.java</file>
+            <file>file:/C:/Users/Joan%20Vidal/Documents/NetBeansProjects/END/SuperCampeones/src/controller/principal/CtlPrincipal.java</file>
+        </group>
     </open-files>
 </project-private>
