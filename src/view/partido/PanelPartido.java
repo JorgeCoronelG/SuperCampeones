@@ -41,15 +41,15 @@ public class PanelPartido extends javax.swing.JPanel {
         Object[][] datos = new Object[lista.size()][3];
 
         for (int i = 0; i < lista.size(); i++) {
-            datos[i][0] = lista.get(i).getArbitroPtd();
-            datos[i][1] = lista.get(i).getJorPtd();
-            datos[i][1] = lista.get(i).getIdPtd();
+            datos[i][0] = lista.get(i).getJorPtd();
+            datos[i][1] = lista.get(i).getArbitroPtd();            
+            datos[i][2] = lista.get(i).getIdPtd();
         }
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 datos,
                 new String[]{
-                    "FECHA", "LOCAL", "VISITANTE"
+                    "JORNADA", "LOCAL", "VISITANTE"
                 }
         ) {
             Class[] types = new Class[]{
@@ -96,11 +96,11 @@ public class PanelPartido extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "FECHA", "LOCAL", "VISITANTE"
+                "JORNADA", "LOCAL", "VISITANTE"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
